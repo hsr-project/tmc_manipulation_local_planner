@@ -1,0 +1,22 @@
+<library path="tmc_local_path_evaluator">
+  <class name="tmc_local_path_evaluator/LengthBaseScoreCalculation"
+         type="tmc_local_path_evaluator::LengthBaseScoreCalculation"
+         base_class_type="tmc_local_path_evaluator::ITrajectoryScoreCalculation">
+    <description>length base score calculation</description>
+  </class>
+  <class name="tmc_local_path_evaluator/SoftJointConstraintScoreCalculation"
+         type="tmc_local_path_evaluator::SoftJointConstraintScoreCalculation"
+         base_class_type="tmc_local_path_evaluator::ITrajectoryScoreCalculation">
+    <description>soft joint constraint score calculation</description>
+  </class>
+  <class name="tmc_local_path_evaluator/SoftLinkConstraintScoreCalculation"
+         type="tmc_local_path_evaluator::SoftLinkConstraintScoreCalculation"
+         base_class_type="tmc_local_path_evaluator::ITrajectoryScoreCalculation">
+    <description>soft link constraint score calculation</description>
+  </class>
+  <class name="tmc_local_path_evaluator/TimeBaseScoreCalculation"
+         type="tmc_local_path_evaluator::TimeBaseScoreCalculation"
+         base_class_type="tmc_local_path_evaluator::ITrajectoryScoreCalculation">
+    <description>time base score calculation</description>
+  </class>
+</library>

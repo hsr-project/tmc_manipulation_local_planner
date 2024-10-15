@@ -1,0 +1,7 @@
+<library path="tmc_local_path_evaluator">
+  <class name="tmc_local_path_evaluator/LocalPathEvaluatorPlugin"
+         type="tmc_local_path_evaluator::LocalPathEvaluatorPlugin"
+         base_class_type="tmc_robot_local_planner::IEvaluator">
+    <description> simple evaluator </description>
+  </class>
+</library>

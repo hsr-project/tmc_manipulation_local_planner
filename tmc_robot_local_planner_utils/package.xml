@@ -1,0 +1,31 @@
+<package format="2">
+  <name>tmc_robot_local_planner_utils</name>
+  <version>2.0.0</version>
+  <description>The tmc_robot_local_planner_utils package</description>
+
+  <maintainer email="xr-hsr-support@mail.toyota.co.jp">HSR Support</maintainer>
+
+  <author>Keisuke Takeshita</author>
+  <author>Satoru Onoda</author>
+
+  <license>BSD 3-clause Clear License</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>eigen</build_depend>
+
+  <depend>boost</depend>
+  <depend>tf2_eigen</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>tmc_manipulation_types</depend>
+  <depend>tmc_manipulation_types_bridge</depend>
+  <depend>tmc_planning_msgs</depend>
+  <depend>tmc_robot_local_planner</depend>
+
+  <test_depend>ament_cmake_gtest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

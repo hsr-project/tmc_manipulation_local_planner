@@ -1,0 +1,125 @@
+/*
+Copyright (c) 2024 TOYOTA MOTOR CORPORATION
+All rights reserved.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted (subject to the limitations in the disclaimer
+below) provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+* Neither the name of the copyright holder nor the names of its contributors may be used
+  to endorse or promote products derived from this software without specific
+  prior written permission.
+NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS
+LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+DAMAGE.
+*/
+
+#pragma once
+
+#include <memory>
+#include <tuple>
+#include <vector>
+#include <Eigen/Geometry>
+#include <tmc_manipulation_types/manipulation_types.hpp>
+#include <tmc_robot_local_planner/joint_constraint.hpp>
+
+using tmc_manipulation_types::Pose2dSeq;
+using tmc_manipulation_types::RobotState;
+using tmc_manipulation_types::NameSeq;
+
+namespace tmc_robot_local_planner {
+
+/// \brief Constraints of wholebody trajectory interface
+class RangeJointConstraint : public IJointConstraint {
+ public:
+  /// \brief Constructor. initialize each parameter.
+  /// \param min robot state
+  /// \param max robot state
+  /// \param priority.
+  /// \param seed.
+  /// \par demeanor.
+  /// - set robot state.
+  /// - set priority.
+  /// - set seed for srand function.
+  RangeJointConstraint(
+      const tmc_manipulation_types::RobotState& min,
+      const tmc_manipulation_types::RobotState& max,
+      uint32_t priority,
+      uint32_t seed);
+
+  /// \brief Transfer Constructor. initialize each parameter.
+  /// \param min robot state
+  /// \param max robot state
+  /// \param priority.
+  /// \par demeanor.
+  /// - set robot state.
+  /// - set priority.
+  RangeJointConstraint(
+      const tmc_manipulation_types::RobotState& min,
+      const tmc_manipulation_types::RobotState& max,
+      uint32_t priority)
+      : RangeJointConstraint(min, max, priority, (unsigned int) time(NULL)) {}
+
+  virtual ~RangeJointConstraint() = default;
+
+  /// \brief Get joint name in range joint constraint.
+  /// \return end frame in constraint.
+  virtual tmc_manipulation_types::NameSeq GetJointName() const;
+
+  /// \brief Get priority in range joint constraint.
+  /// \return priority in constraint.
+  virtual uint32_t GetPriority() const;
+
+  /// \brief Generate sample from range joint constraint.
+  /// \return A sample in constraint.
+  virtual tmc_manipulation_types::RobotState Sample() const;
+
+  /// \brief Calcurate closest point in range joint constraint.
+  /// \param state pose from origin to query frame.
+  /// \return A state closeet to pose
+  // virtual tmc_manipulation_types::RobotState CalcClosest(
+  //     const tmc_manipulation_types::RobotState& state) const;
+
+  /// \brief calcurate displacement
+  /// \param state query state of robot.
+  /// \return displacement value.
+  virtual double CalcDisplacement(
+      const tmc_manipulation_types::RobotState& state) const;
+
+  /// \brief calcurate displacement
+  /// \param state query state of robot.
+  /// \return displacement values per joints.
+  virtual std::tuple<Eigen::VectorXd, Eigen::VectorXd> CalcSeparateDisplacements(
+      const tmc_manipulation_types::RobotState& state) const;
+
+  /// \brief Return query is in range joint constraint or not.
+  /// \param state query state of robot.
+  /// \return If query is in constraint or not.
+  // virtual bool IsInConstraint(
+  //     const tmc_manipulation_types::RobotState& state) const;
+
+ private:
+  tmc_manipulation_types::NameSeq joint_names_;
+  tmc_manipulation_types::NameSeq multi_dof_joint_names_;
+  Eigen::VectorXd min_pos_;
+  Eigen::VectorXd max_pos_;
+  Eigen::VectorXd diff_pos_;
+  tmc_manipulation_types::Pose2dSeq min_2d_poses_;
+  tmc_manipulation_types::Pose2dSeq max_2d_poses_;
+  tmc_manipulation_types::Pose2dSeq diff_2d_poses_;
+  uint32_t priority_;
+};
+
+}  // namespace tmc_robot_local_planner

@@ -1,0 +1,12 @@
+<library path="tmc_simple_path_generator">
+  <class name="tmc_simple_path_generator/SampleGoalGenerator"
+         type="tmc_simple_path_generator::SampleGoalGenerator"
+         base_class_type="tmc_simple_path_generator::SampleGoalGeneratorBase">
+    <description> Single-thread goal sampler</description>
+  </class>
+  <class name="tmc_simple_path_generator/SampleGoalGeneratorMultiThread"
+         type="tmc_simple_path_generator::SampleGoalGeneratorMultiThread"
+         base_class_type="tmc_simple_path_generator::SampleGoalGeneratorBase">
+    <description> Multi-thread goal sampler</description>
+  </class>
+</library>

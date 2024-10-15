@@ -1,0 +1,7 @@
+<library path="tmc_simple_path_generator">
+  <class name="tmc_simple_path_generator/SimplePathGeneratorPlugin"
+         type="tmc_simple_path_generator::SimplePathGeneratorPlugin"
+         base_class_type="tmc_robot_local_planner::IGenerator">
+    <description> SinmplePathGenerator </description>
+  </class>
+</library>

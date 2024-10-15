@@ -1,0 +1,7 @@
+<library path="tmc_simple_path_generator">
+  <class name="tmc_simple_path_generator/PlanerMiddleStateGenerator"
+         type="tmc_simple_path_generator::PlanerMiddleStateGenerator"
+         base_class_type="tmc_simple_path_generator::ISampleMiddleGenerator">
+    <description> Middle state sampler for omni-base</description>
+  </class>
+</library>

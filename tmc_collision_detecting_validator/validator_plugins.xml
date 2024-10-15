@@ -1,0 +1,7 @@
+<library path="tmc_collision_detecting_validator">
+  <class name="tmc_collision_detecting_validator/CollisionDetectingValidatorPlugin"
+         type="tmc_collision_detecting_validator::CollisionDetectingValidatorPlugin"
+         base_class_type="tmc_robot_local_planner::IValidator">
+    <description> simple validator </description>
+  </class>
+</library>

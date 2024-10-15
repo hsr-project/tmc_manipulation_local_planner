@@ -1,0 +1,7 @@
+<library path="tmc_robot_local_planner_visualization">
+  <class name="tmc_robot_local_planner_visualization/GeneratedTrajectoriesDisplay"
+         type="tmc_robot_local_planner_visualization::GeneratedTrajectoriesDisplay"
+         base_class_type="rviz_common::Display">
+    <description> Displays for trajectories by generator </description>
+  </class>
+</library>

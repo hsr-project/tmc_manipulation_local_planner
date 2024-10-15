@@ -1,0 +1,12 @@
+<library path="tmc_simple_path_generator">
+  <class name="tmc_simple_path_generator/PlanarTrajectoryInterpolator"
+         type="tmc_simple_path_generator::PlanarTrajectoryInterpolator"
+         base_class_type="tmc_simple_path_generator::ITrajectoryInterpolator">
+    <description>planar trajectory interpolator</description>
+  </class>
+  <class name="tmc_simple_path_generator/PlanarTrajectoryInterpolatorPlain"
+         type="tmc_simple_path_generator::PlanarTrajectoryInterpolatorPlain"
+         base_class_type="tmc_simple_path_generator::ITrajectoryInterpolator">
+    <description>not elaborate planar trajectory interpolator</description>
+  </class>
+</library>
